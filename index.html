@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudoku Solver</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Sudoku Solver</h1>
+  <select id="difficulty">
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+  <button onclick="generate()">Generate Puzzle</button>
+  <button onclick="solve()">Solve</button>
+  <div id="sudoku-board"></div>
+  <script src="script.js"></script>
+</body>
+</html>
