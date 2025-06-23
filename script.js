@@ -77,12 +77,16 @@ function readUIToBoard() {
 
 function solve() {
   readUIToBoard();
-  if (solveSudoku()) {
-    loadBoardToUI();
-    alert("Solved!");
-  } else {
-    alert("No solution found.");
-  }
+  const start = performance.now();
+  const solved = solveSudoku();
+  const end = performance.now();
+
+  const time = (end - start).toFixed(2);
+  document.getElementById("metrics").innerText = solved
+    ? `✅ Solved in ${time} ms`
+    : "❌ No solution found";
+
+  loadBoardToUI();
 }
 
 function createBoardUI() {
@@ -100,7 +104,6 @@ function createBoardUI() {
 }
 
 function generateFullBoard() {
-  // Reset
   for (let i = 0; i < SIZE; i++) {
     board[i] = new Array(SIZE).fill(0);
   }
@@ -116,12 +119,8 @@ function removeCellsForDifficulty(level) {
   else if (level === "medium") clues = 30;
   else clues = 20;
 
-  const totalCells = 81;
-  const cellsToRemove = totalCells - clues;
-
-  const positions = [];
-  for (let i = 0; i < 81; i++) positions.push(i);
-  for (let k = 0; k < cellsToRemove; k++) {
+  const positions = Array.from({ length: 81 }, (_, i) => i);
+  while (positions.length > clues) {
     const idx = Math.floor(Math.random() * positions.length);
     const pos = positions.splice(idx, 1)[0];
     const row = Math.floor(pos / 9);
@@ -132,10 +131,14 @@ function removeCellsForDifficulty(level) {
 
 function generate() {
   generateFullBoard();
-
   const level = document.getElementById("difficulty").value;
   removeCellsForDifficulty(level);
   loadBoardToUI();
 }
 
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+
 createBoardUI();
+

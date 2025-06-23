@@ -1,20 +1,68 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   text-align: center;
+  margin: 0;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
   padding: 20px;
+}
+
+.controls {
+  margin: 20px 0;
+}
+
+button, select {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 #sudoku-board {
   display: grid;
-  grid-template-columns: repeat(9, 40px);
-  grid-gap: 2px;
+  grid-template-columns: repeat(9, 45px);
+  gap: 4px;
   justify-content: center;
   margin-top: 20px;
 }
 
 input {
-  width: 38px;
-  height: 38px;
+  width: 45px;
+  height: 45px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+input:focus {
+  background-color: #e0f7fa;
+  outline: none;
+}
+
+.dark input {
+  background-color: #1e1e1e;
+  border-color: #444;
+  color: #fff;
+}
+
+#metrics {
+  margin-top: 20px;
+  font-size: 16px;
 }

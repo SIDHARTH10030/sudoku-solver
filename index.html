@@ -7,15 +7,25 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Sudoku Solver</h1>
-  <select id="difficulty">
-    <option value="easy">Easy</option>
-    <option value="medium">Medium</option>
-    <option value="hard">Hard</option>
-  </select>
-  <button onclick="generate()">Generate Puzzle</button>
-  <button onclick="solve()">Solve</button>
-  <div id="sudoku-board"></div>
+  <div class="container">
+    <h1>Sudoku Solver</h1>
+    
+    <div class="controls">
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button onclick="generate()">🎲 Generate</button>
+      <button onclick="solve()">✅ Solve</button>
+      <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+    </div>
+
+    <div id="sudoku-board"></div>
+
+    <div id="metrics"></div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
