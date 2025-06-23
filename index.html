@@ -2,28 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sudoku Solver</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Sudoku Solver</h1>
-    
-    <div class="controls">
-      <select id="difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
+    <h1>🧩 Sudoku Solver</h1>
+
+    <select id="difficulty">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <div class="buttons">
       <button onclick="generate()">🎲 Generate</button>
-      <button onclick="solve()">✅ Solve</button>
-      <button onclick="toggleTheme()">🌓 Toggle Theme</button>
+      <button onclick="solve()">🧠 Solve</button>
+      <button onclick="giveHint()">💡 Hint</button>
+      <button onclick="checkErrors()">🔍 Check</button>
     </div>
+
+    <div id="timer">Time: <span id="time">0:00</span></div>
+    <div id="error-message"></div>
 
     <div id="sudoku-board"></div>
 
-    <div id="metrics"></div>
+    <div class="performance">
+      <h3>Performance Analysis</h3>
+      <div id="performance-text">Generate a puzzle to see your performance analysis</div>
+    </div>
   </div>
 
   <script src="script.js"></script>
