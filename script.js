@@ -302,19 +302,25 @@ function updatePerformance() {
   });
   const progress = Math.floor((correctCells / (81 - emptyCells)) * 100) || 0;
   const speedScore = Math.max(0, 100 - Math.floor(elapsed / 5));
-  let iqEstimate;
-  if (difficulty === 'easy') {
-    iqEstimate = 80 + Math.floor(Math.random() * 20) + Math.min(20, progress / 5);
-  } else if (difficulty === 'medium') {
-    iqEstimate = 100 + Math.floor(Math.random() * 20) + Math.min(20, progress / 5);
-  } else {
-    iqEstimate = 120 + Math.floor(Math.random() * 20) + Math.min(20, progress / 5);
-  }
+  /* ---- IQ estimate: rises with progress, falls with time --------- */
+const baseIQ  = { easy: 80,  medium: 80, hard: 80 };   // starting point
+const rangeIQ = { easy: 20,  medium: 25,  hard: 30  };   // max bonus
+
+const decayRate = {        // IQ loss per second
+  easy:   1 / 20,          // -1 every 20 s
+  medium: 1 / 30,          // -1 every 30 s
+  hard:   1 / 45           // -1 every 45 s
+};
+
+const bonus      = (progress / 100) * rangeIQ[difficulty];     // +0…20/25/30
+const timeLoss   = elapsed * decayRate[difficulty];            // -loss over time
+let   iqEstimate = baseIQ[difficulty] + bonus - timeLoss;
+
+iqEstimate = Math.max(baseIQ[difficulty], Math.round(iqEstimate));
+
   document.getElementById("performance-text").innerHTML = `
     <p><strong>Correct:</strong> ${correctCells}</p>
     <p><strong>Incorrect:</strong> ${incorrectCells}</p>
-    <p><strong>Progress:</strong> ${progress}%</p>
-    <p><strong>Speed Score:</strong> ${speedScore}%</p>
     <p><strong>IQ Estimate:</strong> ${Math.round(iqEstimate)}</p>
   `;
 }
