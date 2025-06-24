@@ -27,3 +27,11 @@ A professional, browser-based Sudoku Generator & Solver built with HTML, CSS, an
 ```bash
 git clone https://github.com/SIDHARTH10030/sudoku-solver.git
 cd sudoku-solver
+
+
+git init
+git add .
+git commit -m "Initial commit with Sudoku Solver Pro"
+git branch -M main
+git remote add origin https://github.com/SIDHARTH10030/sudoku-solver.git
+git push -u origin main
