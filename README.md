@@ -1,4 +1,4 @@
-# 🧩 Sudoku Solver Pro
+# 🧩 Sudoku Solver 
 
 A professional, browser-based Sudoku Generator & Solver built with HTML, CSS, and JavaScript — powered by backtracking and bitmasking for optimal performance and clean UI. 🔢
 
@@ -28,7 +28,9 @@ A professional, browser-based Sudoku Generator & Solver built with HTML, CSS, an
 git clone https://github.com/SIDHARTH10030/sudoku-solver.git
 cd sudoku-solver
 
+---
 
+### 3️⃣Run these commands in the terminal
 git init
 git add .
 git commit -m "Initial commit with Sudoku Solver Pro"
